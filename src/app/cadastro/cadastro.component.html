@@ -19,9 +19,7 @@
         minlength="2"
         #nome="ngModel"
       />
-      <div
-        *ngIf="(nome?.invalid && nome?.touched) || nome?.dirty"
-      >
+      <div *ngIf="(nome?.invalid && nome?.touched) || nome?.dirty">
         <app-mensagem
           *ngIf="nome?.errors?.['required']"
           mensagem="Campo obrigatório"
@@ -52,6 +50,7 @@
           placeholder="(XX) XXXXX-XXXX"
           class="campo__escrita"
           ngModel
+          #telefone="ngModel"
           required
           pattern="(\(?\d{2}\)?\s?)(\d{5}\-?\d{4})"
         />
@@ -62,23 +61,30 @@
             f.controls['telefone']?.dirty
           "
         >
-          <span
-            class="erro__texto"
-            *ngIf="f.controls['telefone']?.errors?.['required']"
-            >Campo obrigatório</span
-          >
-          <span
-            class="erro__texto"
-            *ngIf="f.controls['telefone']?.errors?.['pattern']"
-            >Telefone inválido</span
-          >
+          <app-mensagem
+            *ngIf="telefone?.errors?.['required']"
+            mensagem="Campo obrigatório"
+          ></app-mensagem>
+          <app-mensagem
+            *ngIf="telefone?.errors?.['pattern']"
+            mensagem="Telefone inválido"
+          ></app-mensagem>
         </div>
       </div>
     </div>
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="email">E-mail</label>
       <!-- input email validation -->
-      <!-- <input name="email" id="email" type="email" class="campo__escrita" ngModel required email/> -->
+      <!-- <input
+        name="email"
+        id="email"
+        type="email"
+        class="campo__escrita"
+        ngModel
+        required
+        email
+        #email="ngModel"
+      /> -->
 
       <!-- input validation with pattern -->
       <input
@@ -87,6 +93,7 @@
         type="email"
         class="campo__escrita"
         ngModel
+        #email="ngModel"
         required
         pattern="^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$"
       />
@@ -97,20 +104,21 @@
           f.controls['email']?.dirty
         "
       >
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['email']?.errors?.['required']"
-          >Campo obrigatório</span
-        >
+        <app-mensagem
+          *ngIf="email?.errors?.['required']"
+          mensagem="Campo obrigatório"
+        ></app-mensagem>
         <!-- input email validation: error message -->
-        <!-- <span class="erro__texto" *ngIf="f.controls['email']?.errors?.['email']">E-mail inválido</span> -->
+        <!-- <app-mensagem
+          *ngIf="email?.errors?.['email']"
+          mensagem="E-mail inválido"
+        ></app-mensagem> -->
 
         <!-- input validation error with pattern: error message -->
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['email']?.errors?.['pattern']"
-          >E-mail inválido</span
-        >
+        <app-mensagem
+          *ngIf="email?.errors?.['pattern']"
+          mensagem="E-mail inválido"
+        ></app-mensagem>
       </div>
     </div>
 
