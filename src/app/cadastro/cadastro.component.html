@@ -17,23 +17,19 @@
         ngModel
         required
         minlength="2"
+        #nome="ngModel"
       />
       <div
-        *ngIf="
-          (f.controls['nome']?.invalid && f.controls['nome']?.touched) ||
-          f.controls['nome']?.dirty
-        "
+        *ngIf="(nome?.invalid && nome?.touched) || nome?.dirty"
       >
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['nome']?.errors?.['required']"
-          >Campo obrigatório</span
-        >
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['nome']?.errors?.['minlength']"
-          >Tamanho mínimo: 2 caractéres</span
-        >
+        <app-mensagem
+          *ngIf="nome?.errors?.['required']"
+          mensagem="Campo obrigatório"
+        ></app-mensagem>
+        <app-mensagem
+          *ngIf="nome?.errors?.['minlength']"
+          mensagem="Tamanho mínimo: 2 caracéres"
+        ></app-mensagem>
       </div>
     </div>
     <div class="formulario__dupla">
