@@ -18,7 +18,11 @@
       </div>
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="telefone">Contato</label>
-        <input name="telefone" id="telefone" type="tel" placeholder="(XX) XXXXX-XXXX" class="campo__escrita" ngModel />
+        <input name="telefone" id="telefone" type="tel" placeholder="(XX) XXXXX-XXXX" class="campo__escrita" ngModel required pattern="(\(?\d{2}\)?\s?)(\d{5}\-?\d{4})"/>
+        <div *ngIf="(f.controls['telefone']?.invalid && f.controls['telefone']?.touched) || f.controls['telefone']?.dirty">
+          <span class="erro__texto" *ngIf="f.controls['telefone']?.errors?.['required']">Campo obrigatório</span>
+          <span class="erro__texto" *ngIf="f.controls['telefone']?.errors?.['pattern']">Telefone inválido</span>
+        </div>
       </div>
     </div>
     <div class="formulario__campo">
@@ -28,7 +32,7 @@
       
       <!-- input validation with pattern -->
       <input name="email" id="email" type="email" class="campo__escrita" ngModel required pattern="^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$"/>
-      
+
       <div *ngIf="(f.controls['email']?.invalid && f.controls['email']?.touched) || f.controls['email']?.dirty">
         <span class="erro__texto" *ngIf="f.controls['email']?.errors?.['required']">Campo obrigatório</span>
         <!-- input email validation: error message -->
