@@ -22,10 +22,23 @@ export class CadastroComponent implements OnInit {
     console.log(form.controls);
   }
 
-  consultaCep(event: any) {
+  populateAddress(data: any, f: NgForm) {
+    f.form.patchValue({
+      endereco: data.logradouro,
+      complemento: data.complemento,
+      bairro: data.bairro,
+      cidade: data.localidade,
+      estado: data.uf,
+    });
+  }
+
+  consultaCep(event: any, f: NgForm) {
     const cep = event.target.value;
+    if (!cep) {
+      return;
+    }
     this.cepService.getConsultaCep(cep).subscribe((result) => {
-      console.log(result);
+      this.populateAddress(result, f);
     });
   }
 }

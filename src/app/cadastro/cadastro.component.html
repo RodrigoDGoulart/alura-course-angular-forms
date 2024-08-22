@@ -155,7 +155,8 @@
         pattern="^(\d{5})(-?\d{3})$"
         minlength="8"
         maxlength="9"
-        (blur)="consultaCep($event)"
+        (blur)="consultaCep($event, f)"
+        cepValidator
       />
       <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
         <app-mensagem
@@ -167,8 +168,8 @@
           mensagem="Tamanho mínimo: 8 caractéres"
         ></app-mensagem>
         <app-mensagem
-          *ngIf="cep?.errors?.['pattern']"
-          mensagem="Valor inválido"
+          *ngIf="cep?.errors?.['cepValidator'] || cep?.errors?.['pattern']"
+          mensagem="CEP inválido"
         ></app-mensagem>
       </div>
     </div>
@@ -257,7 +258,7 @@
 
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="estado">UF</label>
-        <select id="estado" name="estado" class="campo__escrita">
+        <select id="estado" name="estado" class="campo__escrita" ngModel #estado="ngModel">
           <option value="AC">Acre</option>
           <option value="AL">Alagoas</option>
           <option value="AP">Amapá</option>
