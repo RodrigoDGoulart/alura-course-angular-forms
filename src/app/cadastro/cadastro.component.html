@@ -175,7 +175,14 @@
 
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="endereco">Endereço</label>
-      <input name="endereco" id="endereco" class="campo__escrita" ngModel #endereco="ngModel" required />
+      <input
+        name="endereco"
+        id="endereco"
+        class="campo__escrita"
+        ngModel
+        #endereco="ngModel"
+        required
+      />
       <div *ngIf="(endereco?.invalid && endereco?.touched) || endereco?.dirty">
         <app-mensagem
           *ngIf="endereco?.errors?.['required']"
@@ -186,7 +193,14 @@
     <div class="formulario__dupla">
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="numero">Numero</label>
-        <input name="numero" id="numero" class="campo__escrita" ngModel #numero="ngModel" required />
+        <input
+          name="numero"
+          id="numero"
+          class="campo__escrita"
+          ngModel
+          #numero="ngModel"
+          required
+        />
         <div *ngIf="(numero?.invalid && numero?.touched) || numero?.dirty">
           <app-mensagem
             *ngIf="numero?.errors?.['required']"
@@ -196,12 +210,25 @@
       </div>
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="complemento">Complemento</label>
-        <input name="complemento" id="complemento" class="campo__escrita" ngModel #complemento="ngModel" />
+        <input
+          name="complemento"
+          id="complemento"
+          class="campo__escrita"
+          ngModel
+          #complemento="ngModel"
+        />
       </div>
     </div>
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="bairro">Bairro</label>
-      <input name="bairro" id="bairro" class="campo__escrita" ngModel #bairro="ngModel" required />
+      <input
+        name="bairro"
+        id="bairro"
+        class="campo__escrita"
+        ngModel
+        #bairro="ngModel"
+        required
+      />
       <div *ngIf="(bairro?.invalid && bairro?.touched) || bairro?.dirty">
         <app-mensagem
           *ngIf="bairro?.errors?.['required']"
@@ -212,7 +239,14 @@
     <div class="formulario__dupla">
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="cidade">Cidade</label>
-        <input name="cidade" id="cidade" class="campo__escrita" ngModel #cidade="ngModel" required />
+        <input
+          name="cidade"
+          id="cidade"
+          class="campo__escrita"
+          ngModel
+          #cidade="ngModel"
+          required
+        />
         <div *ngIf="(cidade?.invalid && cidade?.touched) || cidade?.dirty">
           <app-mensagem
             *ngIf="cidade?.errors?.['required']"
