@@ -145,8 +145,31 @@
 
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="cep">CEP</label>
-      <input name="cep" id="cep" class="campo__escrita" />
-      <div id="erro"></div>
+      <input
+        name="cep"
+        id="cep"
+        class="campo__escrita"
+        ngModel
+        required
+        #cep="ngModel"
+        pattern="^(\d{5})(-?\d{3})$"
+        minlength="8"
+        maxlength="9"
+      />
+      <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
+        <app-mensagem
+          *ngIf="cep?.errors?.['required']"
+          mensagem="Campo obrigatório"
+        ></app-mensagem>
+        <app-mensagem
+          *ngIf="cep?.errors?.['minlength']"
+          mensagem="Tamanho mínimo: 8 caractéres"
+        ></app-mensagem>
+        <app-mensagem
+          *ngIf="cep?.errors?.['pattern']"
+          mensagem="Valor inválido"
+        ></app-mensagem>
+      </div>
     </div>
 
     <div class="formulario__campo">
