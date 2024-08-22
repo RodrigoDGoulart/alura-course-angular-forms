@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
   providedIn: "root",
 })
 export class ConsultaCepService {
-  url_APi = "https://viacep.com.br/ws/";
+  url_APi = "https://viacep.com.br/ws";
   constructor(private http: HttpClient) {}
 
   getConsultaCep(cep: string) {
